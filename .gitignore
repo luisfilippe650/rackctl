@@ -1,0 +1,20 @@
+# ambientes virtuais
+.venv/
+env/
+
+# cache python
+__pycache__/
+*.pyc
+
+# IDE (PyCharm / VSCode)
+.idea/
+.vscode/
+
+# sistema
+.DS_Store
+
+# logs
+*.log
+
+#IGNORAR A PASTA APP
+app/
