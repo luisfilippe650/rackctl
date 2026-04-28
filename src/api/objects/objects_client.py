@@ -2,27 +2,38 @@ from src.config import BASE_URL
 import requests
 
 def post(route, data):
+
     url = f"{BASE_URL}{route}"
 
-    response = requests.post(url, json=data)
+    response = requests.post(url, data)
 
     return response
 
-def delete(route, data):
-    url = f"{BASE_URL}{route}{data}"
+def delete(route):
+
+    url = f"{BASE_URL}{route}"
 
     response = requests.delete(url)
 
     return response
 
+def patch(route, data):
+
+    url = f"{BASE_URL}{route}"
+
+    response = requests.patch(url,data)
+
+    return response
+
 def get(route):
+
     url = f"{BASE_URL}{route}"
 
     response = requests.get(url)
 
     return response
 
-def get_rows(route):
+def get_types(route):
 
     url = f"{BASE_URL}{route}"
 

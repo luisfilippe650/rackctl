@@ -1,6 +1,5 @@
 from src.api.rackspace.manageLocations_client import post
 
-#funcao que ira enviar os dados para api
 def add_locations(args):
 
     data = {
