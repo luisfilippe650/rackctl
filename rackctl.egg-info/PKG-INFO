@@ -1,8 +1,0 @@
-Metadata-Version: 2.4
-Name: rackctl
-Version: 1.0.0
-Summary: CLI para comunicação com a API do RackTables
-Requires-Dist: requests
-Requires-Dist: python-dotenv
-Dynamic: requires-dist
-Dynamic: summary

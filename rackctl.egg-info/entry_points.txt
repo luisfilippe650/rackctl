@@ -1,2 +1,0 @@
-[console_scripts]
-rackctl = src.__main__:main
