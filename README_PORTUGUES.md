@@ -22,7 +22,7 @@ pip install -r requirements.txt
 
 A URL base da API � configurada em `src/config.py` por meio da vari�vel de ambiente `RACK_API_URL`.
 
-Crie um arquivo `.env` dentro de `src/cli/`:
+Crie um arquivo `.env` dentro de `/src`:
 
 ```env
 RACK_API_URL="http://localhost:8000/v1"
