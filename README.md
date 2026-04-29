@@ -13,7 +13,7 @@ A command-line interface (CLI) for interacting with the [RackTables REST API ](h
 Install dependencies:
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements.txt.txt
 ```
 
 ---

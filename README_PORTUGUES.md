@@ -13,7 +13,7 @@ Uma interface de linha de comando (CLI) para interagir com o [RackTables REST AP
 Instale as dependências:
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements.txt.txt
 ```
 
 ---

@@ -1,4 +1,5 @@
 import argparse
+
 from src.cli.objects import register_objects_commands
 from src.cli.rackspace.locations import register_locations_commands
 from src.cli.rackspace.rack import register_rack_commands
@@ -13,7 +14,7 @@ def main():
 
     subparsers = parser.add_subparsers(
         dest="resource",
-        required=True
+        required=False
     )
 
     register_locations_commands(subparsers)
@@ -22,7 +23,13 @@ def main():
     register_objects_commands(subparsers)
 
     args = parser.parse_args()
-    args.func(args)
+
+    if hasattr(args, "func"):
+        args.func(args)
+    else:
+        print("\nRackCTL - CLI for RackTables")
+        print("Use --help to know the commands\n")
+        parser.print_help()
 
 
 if __name__ == "__main__":
