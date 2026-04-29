@@ -25,7 +25,7 @@ def delete_row_location(route):
 def patch(route, row_id, data):
 
     url = f"{BASE_URL}{route}{row_id},"
-    response = requests.patch(url,data)
+    response = requests.patch(url,json=data)
 
     return response
 

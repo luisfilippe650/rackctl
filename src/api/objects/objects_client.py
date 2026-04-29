@@ -5,7 +5,7 @@ def post(route, data):
 
     url = f"{BASE_URL}{route}"
 
-    response = requests.post(url, data)
+    response = requests.post(url,json=data)
 
     return response
 
@@ -21,7 +21,7 @@ def patch(route, data):
 
     url = f"{BASE_URL}{route}"
 
-    response = requests.patch(url,data)
+    response = requests.patch(url,json=data)
 
     return response
 
