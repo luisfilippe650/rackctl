@@ -154,28 +154,27 @@ rackctl objects rename 12 "web-server-02"
 
 ```
 src/
-??? api/
-?   ??? objects/
-?   ?   ??? mount_unmount_client.py
-?   ?   ??? move_client.py
-?   ?   ??? objects_client.py
-?   ??? rackspace/
-?       ??? locations_client.py
-?       ??? rack_client.py
-?       ??? rows_client.py
-??? cli/
-?   ??? objects/
-?   ??? rackspace/
-?       ??? locations/
-?       ??? rack/
-?       ??? rows/ 
-?   
-??? .gitignore
-??? .env
-???__main__.py
-???config.py
-??? rackctl
-??? requirements.txt
+├── api/
+│   ├── objects/
+│   │   ├── mount_unmount_client.py
+│   │   ├── move_client.py
+│   │   └── objects_client.py
+│   └── rackspace/
+│       ├── locations_client.py
+│       ├── rack_client.py
+│       └── rows_client.py
+├── cli/
+│   ├── objects/
+│   ├── rackspace/
+│       ├── locations/
+│       ├── rack/
+│       └── rows/
+├── .gitignore
+├── .env
+├── __main__.py
+├── config.py
+├── rackctl
+└── requirements.txt
 ```
 
 ---
