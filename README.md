@@ -22,7 +22,7 @@ pip install -r requirements.txt
 
 The base API URL is configured in `src/config.py` via the `RACK_API_URL` environment variable.
 
-Create a `.env` file inside `src/cli/`:
+Create a `.env` file inside `/src`:
 
 ```env
 RACK_API_URL="http://localhost:8000/v1"
