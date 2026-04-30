@@ -1,17 +1,12 @@
 from src.api.rackspace.rows_client import delete
-
+from src.utils.output import print_response
 
 def delete_row(args):
     route = f"/rows/{args.row_id}"
 
     response = delete(route)
 
-    print("Status:", response.status_code)
-
-    try:
-        print("Response:", response.json())
-    except ValueError:
-        print("Response:", response.text)
+    print_response(response)
 
 
 def register_command_delete_rows(subparser):

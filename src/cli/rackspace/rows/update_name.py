@@ -1,5 +1,5 @@
 from src.api.rackspace.rows_client import patch
-
+from src.utils.output import print_response
 
 def rename_row(args):
     route = f"/rows/{args.row_id}"
@@ -10,12 +10,7 @@ def rename_row(args):
 
     response = patch(route, data)
 
-    print("Status:", response.status_code)
-
-    try:
-        print("Response:", response.json())
-    except ValueError:
-        print("Response:", response.text)
+    print_response(response)
 
 
 def register_command_update_name(subparser):

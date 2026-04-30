@@ -1,17 +1,13 @@
 from src.api.rackspace.rack_client import get_occupancy
+from src.utils.output import print_response
 
 
-def list_rack_occupancy(args):
+def list_rack_occupancy(_):
     route = "/racks/occupancy"
 
     response = get_occupancy(route)
 
-    print("Status:", response.status_code)
-
-    try:
-        print("Response:", response.json())
-    except ValueError:
-        print("Response:", response.text)
+    print_response(response)
 
 
 def register_command_racks_occupancy(subparser):

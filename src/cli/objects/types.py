@@ -1,17 +1,12 @@
 from src.api.objects.objects_client import get_types
+from src.utils.output import print_response
 
-
-def list_object_types(args):
+def list_object_types(_):
     route = "/objects/types"
 
     response = get_types(route)
 
-    print("Status:", response.status_code)
-
-    try:
-        print("Response:", response.json())
-    except ValueError:
-        print("Response:", response.text)
+    print_response(response)
 
 
 def register_command_list_object_types(subparser):

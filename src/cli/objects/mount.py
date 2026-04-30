@@ -1,7 +1,8 @@
 from src.api.objects.mount_unmount_client import post
+from src.utils.output import print_response
 
 def mount_object(args):
-    route = "/allocations"
+    route = "/mount"
 
     data = {
         "rack_id": args.rack_id,
@@ -12,12 +13,7 @@ def mount_object(args):
 
     response = post(route, data)
 
-    print("Status:", response.status_code)
-
-    try:
-        print("Response:", response.json())
-    except ValueError:
-        print("Response:", response.text)
+    print_response(response)
 
 
 def register_command_mount_object(subparser):

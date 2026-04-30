@@ -8,7 +8,7 @@ def post(route, data):
 
     return response
 
-def delete(route, data):
+def delete(route):
     url = f"{BASE_URL}{route}{data}"
 
     response = requests.delete(url)

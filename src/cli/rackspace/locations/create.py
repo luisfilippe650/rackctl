@@ -1,4 +1,5 @@
 from src.api.rackspace.locations_client import post
+from src.utils.output import print_response
 
 def create_location(args):
     data = {
@@ -7,12 +8,7 @@ def create_location(args):
 
     response = post("/locations", data)
 
-    print("Status:", response.status_code)
-
-    try:
-        print("Response:", response.json())
-    except ValueError:
-        print("Response:", response.text)
+    print_response(response)
 
 
 def register_command_create_location(subparser):

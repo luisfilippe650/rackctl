@@ -1,16 +1,12 @@
 from src.api.objects.mount_unmount_client import delete
+from src.utils.output import print_response
 
 def unmount_object(args):
-    route = f"/allocations/{args.object_id}"
+    route = f"/mount/{args.object_id}"
 
     response = delete(route)
 
-    print("Status:", response.status_code)
-
-    try:
-        print("Response:", response.json())
-    except ValueError:
-        print("Response:", response.text)
+    print_response(response)
 
 
 def register_command_unmount_object(subparser):

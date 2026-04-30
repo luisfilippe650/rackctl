@@ -1,14 +1,10 @@
 from src.api.rackspace.locations_client import get_rows
+from src.utils.output import print_response
 
-def list_locations_with_rows(args):
+def list_locations_with_rows(_):
     response = get_rows("/locations/rows")
 
-    print("Status:", response.status_code)
-
-    try:
-        print("Response:", response.json())
-    except ValueError:
-        print("Response:", response.text)
+    print_response(response)
 
 
 def register_command_list_locations_rows(subparser):

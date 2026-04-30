@@ -1,17 +1,12 @@
 from src.api.rackspace.rack_client import get_details
-
+from src.utils.output import print_response
 
 def get_rack_details(args):
     route = f"/racks/{args.rack_id}"
 
     response = get_details(route)
 
-    print("Status:", response.status_code)
-
-    try:
-        print("Response:", response.json())
-    except ValueError:
-        print("Response:", response.text)
+    print_response(response)
 
 
 def register_command_show_rack(subparser):

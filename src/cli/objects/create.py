@@ -1,4 +1,5 @@
 from src.api.objects.objects_client import post
+from src.utils.output import print_response
 
 def create_object(args):
     route = "/objects"
@@ -10,12 +11,7 @@ def create_object(args):
 
     response = post(route, data)
 
-    print("Status:", response.status_code)
-
-    try:
-        print("Response:", response.json())
-    except ValueError:
-        print("Response:", response.text)
+    print_response(response)
 
 
 def register_command_create_object(subparser):

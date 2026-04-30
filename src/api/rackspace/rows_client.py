@@ -22,9 +22,9 @@ def delete_row_location(route):
 
     return response
 
-def patch(route, row_id, data):
+def patch(route, data):
 
-    url = f"{BASE_URL}{route}{row_id},"
+    url = f"{BASE_URL}{route},"
     response = requests.patch(url,json=data)
 
     return response

@@ -1,15 +1,10 @@
 from src.api.rackspace.locations_client import get
+from src.utils.output import print_response
 
-
-def list_locations(args):
+def list_locations(_):
     response = get("/locations")
 
-    print("Status:", response.status_code)
-
-    try:
-        print("Response:", response.json())
-    except ValueError:
-        print("Response:", response.text)
+    print_response(response)
 
 
 def register_command_list_locations(subparser):

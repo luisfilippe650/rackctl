@@ -1,16 +1,12 @@
 from src.api.rackspace.rows_client import put
+from src.utils.output import print_response
 
 def add_location_to_row(args):
     route = f"/rows/{args.row_id}/{args.location_id}"
 
     response = put(route)
 
-    print("Status:", response.status_code)
-
-    try:
-        print("Response:", response.json())
-    except ValueError:
-        print("Response:", response.text)
+    print_response(response)
 
 
 def register_command_add_location_to_row(subparser):
