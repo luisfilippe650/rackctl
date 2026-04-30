@@ -56,7 +56,7 @@ Manage physical locations in your data center.
 **Examples:**
 
 ```bash
-rackctl locations create "Datacenter S�o Paulo"
+rackctl locations create "Datacenter São Paulo"
 rackctl locations delete 3
 rackctl locations list
 rackctl locations list-rows
