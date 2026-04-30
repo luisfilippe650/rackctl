@@ -1,5 +1,5 @@
 from src.api.rackspace.rack_client import patch
-from utils.output import print_response
+from src.utils.output import print_response
 
 def rename_rack(args):
     route = f"/racks/{args.rack_id}"
