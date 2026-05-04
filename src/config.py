@@ -1,6 +1,6 @@
-import os
-from dotenv import load_dotenv
+from src.utils.config_loader import load_config
 
-load_dotenv()
+config = load_config()
 
-BASE_URL = os.getenv("RACK_API_URL", "http://localhost:8000/v1")
+BASE_URL = config.get("api_url")
+TIMEOUT = config.get("timeout", 10)
