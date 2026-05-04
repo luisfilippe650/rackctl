@@ -3,11 +3,12 @@ from setuptools import setup, find_packages
 setup(
     name="rackctl",
     version="1.0.0",
-    description="CLI for communicating with the RackTables API (https://github.com/luisfilippe650/racktables-rest-api) ",
+    description="CLI for communicating with the RackTables API",
     packages=find_packages(),
     install_requires=[
         "requests",
-        "python-dotenv"
+        "python-dotenv",
+        "pyyaml"
     ],
     entry_points={
         "console_scripts": [
