@@ -1,5 +1,6 @@
-rackctl (1.0.0-1) noble; urgency=low
+rackctl (1.0.0-1) unstable; urgency=low
 
   * Initial release.
+  * CLI for communicating with the RackTables API.
 
- -- Seu Nome <seu@email.com>  Mon, 05 May 2025 12:00:00 +0000
+ -- INPE/CPTEC - COIDS <luis.nogueira@inpe.br>  Mon, 05 May 2026 12:00:00 +0000

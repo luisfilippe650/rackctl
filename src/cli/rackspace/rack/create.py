@@ -1,4 +1,4 @@
-from src.api.rackspace.rack_client import post
+from src.api.base_client import post
 from src.utils.output import print_response
 
 def create_rack(args):
@@ -13,7 +13,6 @@ def create_rack(args):
     response = post(route, data)
 
     print_response(response)
-
 
 def register_command_create_rack(subparser):
     parser = subparser.add_parser(

@@ -1,13 +1,12 @@
-from src.api.rackspace.rack_client import get_single_occupancy
+from src.api.base_client import get
 from src.utils.output import print_response
 
 def show_rack_occupancy(args):
     route = f"/racks/{args.rack_id}/occupancy"
 
-    response = get_single_occupancy(route)
+    response = get(route)
 
     print_response(response)
-
 
 def register_command_show_rack_occupancy(subparser):
     parser = subparser.add_parser(

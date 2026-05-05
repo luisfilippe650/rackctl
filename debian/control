@@ -1,7 +1,7 @@
 Source: rackctl
 Section: utils
 Priority: optional
-Maintainer: Seu Nome <seu@email.com>
+Maintainer: INPE/CPTEC - COIDS <luis.nogueira@inpe.br>
 Build-Depends: debhelper-compat (= 13), dh-python, python3-all, python3-setuptools
 Standards-Version: 4.6.0
 Rules-Requires-Root: no

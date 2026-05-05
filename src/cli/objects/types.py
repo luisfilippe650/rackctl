@@ -1,13 +1,12 @@
-from src.api.objects.objects_client import get_types
+from src.api.base_client import get
 from src.utils.output import print_response
 
 def list_object_types(_):
     route = "/objects/types"
 
-    response = get_types(route)
+    response = get(route)
 
     print_response(response)
-
 
 def register_command_list_object_types(subparser):
     parser = subparser.add_parser(

@@ -1,6 +1,15 @@
 import os
 import yaml
 
+"""
+Configuration Management Module.
+
+This module handles the loading and initialization of the 'rackctl' settings.
+It ensures that the configuration directory (~/.config/rackctl) and the 
+'config.yaml' file exist, bootstrapping them with default values if missing.
+"""
+
+
 CONFIG_DIR = os.path.expanduser("~/.config/rackctl")
 CONFIG_FILE = os.path.join(CONFIG_DIR, "config.yaml")
 
@@ -9,12 +18,8 @@ DEFAULT_CONFIG = {
     "timeout": 10
 }
 
-
 def ensure_config():
-    """
-    Garante que o arquivo de config existe.
-    Se não existir, cria com valores padrão.
-    """
+
     if not os.path.exists(CONFIG_DIR):
         os.makedirs(CONFIG_DIR)
 
@@ -28,3 +33,9 @@ def load_config():
 
     with open(CONFIG_FILE, "r") as f:
         return yaml.safe_load(f)
+
+
+config = load_config()
+
+BASE_URL = config.get("api_url")
+TIMEOUT = config.get("timeout", 10)

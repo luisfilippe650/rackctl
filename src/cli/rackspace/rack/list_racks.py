@@ -1,4 +1,4 @@
-from src.api.rackspace.rack_client import get
+from src.api.base_client import get
 from src.utils.output import print_response
 
 def list_racks(_):
@@ -7,7 +7,6 @@ def list_racks(_):
     response = get(route)
 
     print_response(response)
-
 
 def register_command_list_racks(subparser):
     parser = subparser.add_parser(

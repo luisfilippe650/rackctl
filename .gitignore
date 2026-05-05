@@ -18,3 +18,11 @@ __pycache__/
 
 #IGNORAR A PASTA APP
 app/
+
+.pybuild/
+*.egg-info/
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.deb

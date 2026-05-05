@@ -1,4 +1,4 @@
-from src.api.objects.objects_client import post
+from src.api.base_client import post
 from src.utils.output import print_response
 
 def create_object(args):
@@ -6,13 +6,12 @@ def create_object(args):
 
     data = {
         "name": args.name,
-        "objtype_id": args.objtype_id
+        "obj-type_id": args.objtype_id
     }
 
     response = post(route, data)
 
     print_response(response)
-
 
 def register_command_create_object(subparser):
     parser = subparser.add_parser(
@@ -27,7 +26,7 @@ def register_command_create_object(subparser):
     )
 
     parser.add_argument(
-        "objtype_id",
+        "obj-type_id",
         type=int,
         help="Object type ID"
     )

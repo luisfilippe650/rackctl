@@ -1,13 +1,12 @@
-from src.api.rackspace.rows_client import delete_row_location
+from src.api.base_client import delete
 from src.utils.output import print_response
 
 def delete_location_from_row(args):
     route = f"/rows/{args.row_id}/{args.location_id}"
 
-    response = delete_row_location(route)
+    response = delete(route)
 
     print_response(response)
-
 
 def register_command_remove_location(subparser):
     parser = subparser.add_parser(

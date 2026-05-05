@@ -1,4 +1,4 @@
-from src.api.rackspace.rows_client import post
+from src.api.base_client import post
 from src.utils.output import print_response
 
 def create_row(args):
@@ -11,7 +11,6 @@ def create_row(args):
     response = post(route, data)
 
     print_response(response)
-
 
 def register_command_create_rows(subparser):
     parser = subparser.add_parser(

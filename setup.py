@@ -4,7 +4,7 @@ setup(
     name="rackctl",
     version="1.0.0",
     description="CLI for communicating with the RackTables API",
-    author="Luis Filippe Reis Nogueira",
+    author="INPE/CPTEC - COIDS",
     author_email="luis.nogueira@inpe.br",
     packages=find_packages(),
     package_dir={"": "."},

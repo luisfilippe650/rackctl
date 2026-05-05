@@ -1,4 +1,4 @@
-from src.api.rackspace.rack_client import patch
+from src.api.base_client import patch
 from src.utils.output import print_response
 
 def rename_rack(args):
@@ -11,7 +11,6 @@ def rename_rack(args):
     response = patch(route, data)
 
     print_response(response)
-
 
 def register_command_rename_rack(subparser):
     parser = subparser.add_parser(

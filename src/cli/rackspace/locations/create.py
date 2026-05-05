@@ -1,4 +1,4 @@
-from src.api.rackspace.locations_client import post
+from src.api.base_client import post
 from src.utils.output import print_response
 
 def create_location(args):
@@ -9,7 +9,6 @@ def create_location(args):
     response = post("/locations", data)
 
     print_response(response)
-
 
 def register_command_create_location(subparser):
     parser = subparser.add_parser(

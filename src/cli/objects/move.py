@@ -1,4 +1,4 @@
-from src.api.objects.move_client import post
+from src.api.base_client import post
 from src.utils.output import print_response
 
 def move_object(args):

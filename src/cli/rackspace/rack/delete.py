@@ -1,4 +1,4 @@
-from src.api.rackspace.rack_client import delete
+from src.api.base_client import delete
 from src.utils.output import print_response
 
 def delete_rack(args):
@@ -7,7 +7,6 @@ def delete_rack(args):
     response = delete(route)
 
     print_response(response)
-
 
 def register_command_delete_rack(subparser):
     parser = subparser.add_parser(

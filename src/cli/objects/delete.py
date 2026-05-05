@@ -1,4 +1,4 @@
-from src.api.objects.objects_client import delete
+from src.api.base_client import delete
 from src.utils.output import print_response
 
 def delete_object(args):
@@ -7,7 +7,6 @@ def delete_object(args):
     response = delete(route)
 
     print_response(response)
-
 
 def register_command_delete_object(subparser):
     parser = subparser.add_parser(

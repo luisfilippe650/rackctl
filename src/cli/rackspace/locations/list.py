@@ -1,11 +1,10 @@
-from src.api.rackspace.locations_client import get
+from src.api.base_client import get
 from src.utils.output import print_response
 
 def list_locations(_):
     response = get("/locations")
 
     print_response(response)
-
 
 def register_command_list_locations(subparser):
     parser = subparser.add_parser(

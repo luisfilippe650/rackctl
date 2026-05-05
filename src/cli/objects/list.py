@@ -1,4 +1,4 @@
-from src.api.objects.objects_client import get
+from src.api.base_client import get
 from src.utils.output import print_response
 
 def list_objects(_):

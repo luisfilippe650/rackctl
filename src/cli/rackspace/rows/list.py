@@ -1,4 +1,4 @@
-from src.api.rackspace.rows_client import get
+from src.api.base_client import get
 from src.utils.output import print_response
 
 def list_rows(_):
@@ -7,7 +7,6 @@ def list_rows(_):
     response = get(route)
 
     print_response(response)
-
 
 def register_command_list_rows(subparser):
     parser = subparser.add_parser(

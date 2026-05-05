@@ -1,4 +1,4 @@
-from src.api.rackspace.rows_client import put
+from src.api.base_client import put
 from src.utils.output import print_response
 
 def add_location_to_row(args):
@@ -7,7 +7,6 @@ def add_location_to_row(args):
     response = put(route)
 
     print_response(response)
-
 
 def register_command_add_location_to_row(subparser):
     parser = subparser.add_parser(
