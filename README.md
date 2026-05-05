@@ -1,34 +1,97 @@
 # rackctl
 
-A command-line interface (CLI) for interacting with the [RackTables REST API ](https://github.com/luisfilippe650/racktables-rest-api). Manage your data center infrastructure ? locations, rows, racks, and objects ? directly from your terminal.
+A command-line interface (CLI) for interacting with the [RackTables REST API](https://github.com/luisfilippe650/racktables-rest-api). Manage your data center infrastructure — locations, rows, racks, and objects — directly from your terminal.
 
 ---
 
 ## Requirements
 
-- Python 3.x
-- [requests](https://pypi.org/project/requests/)
-- [python-dotenv](https://pypi.org/project/python-dotenv/)
+- Python 3.8+
+- `python3-requests`
+- `python-dotenv`
+- `pyyaml`
 
-Install dependencies:
+---
+
+## Installation
+
+### Option 1 — Install via `.deb` package (recommended)
+
+Download the latest `.deb` package and install:
 
 ```bash
-pip install -r requirements.txt.txt
+sudo dpkg -i rackctl_1.0.0-1_all.deb
+sudo apt-get install -f   # install missing dependencies if needed
+```
+
+Verify the installation:
+
+```bash
+rackctl --help
+```
+
+### Option 2 — Build the `.deb` from source
+
+> **Prerequisites:** Ubuntu 20.04 / 22.04 / 24.04 (or any Debian-based distro)
+
+**1. Clone the repository:**
+
+```bash
+git clone https://github.com/luisfilippe650/rackctl.git
+cd rackctl
+```
+
+**2. Install build dependencies:**
+
+```bash
+sudo apt update
+sudo apt install -y devscripts debhelper dh-python python3-all \
+    python3-setuptools python3-requests python3-dotenv python3-yaml
+```
+
+**3. Build the package:**
+
+```bash
+dpkg-buildpackage -us -uc -b
+```
+
+**4. Install the generated `.deb`:**
+
+```bash
+sudo dpkg -i ../rackctl_1.0.0-1_all.deb
+```
+
+### Option 3 — Run directly with pip (development)
+
+```bash
+git clone https://github.com/luisfilippe650/rackctl.git
+cd rackctl
+pip install -r requirements.txt
+python -m src --help
 ```
 
 ---
 
 ## Configuration
 
-The base API URL is configured in `src/config.py` via the `RACK_API_URL` environment variable.
+On first run, `rackctl` automatically creates a configuration file at:
 
-Create a `.env` file inside `/src`:
-
-```env
-RACK_API_URL="http://localhost:8000/v1"
+```
+~/.config/rackctl/config.yaml
 ```
 
-Or edit `src/config.py` directly to change the default base URL.
+Default contents:
+
+```yaml
+api_url: http://localhost:8000/v1
+timeout: 10
+```
+
+Edit it with any text editor to point to your RackTables API:
+
+```bash
+nano ~/.config/rackctl/config.yaml
+```
 
 ---
 
@@ -153,28 +216,33 @@ rackctl objects rename 12 "web-server-02"
 ## Project Structure
 
 ```
-src/
-├── api/
-│   ├── objects/
-│   │   ├── mount_unmount_client.py
-│   │   ├── move_client.py
-│   │   └── objects_client.py
-│   └── rackspace/
-│       ├── locations_client.py
-│       ├── rack_client.py
-│       └── rows_client.py
-├── cli/
-│   ├── objects/
-│   ├── rackspace/
-│       ├── locations/
-│       ├── rack/
-│       └── rows/
-├── .gitignore
-├── .env
-├── __main__.py
-├── config.py
-├── rackctl
-└── requirements.txt
+rackctl/
+├── debian/                  # .deb package build configuration
+│   ├── changelog
+│   ├── control
+│   └── rules
+├── src/
+│   ├── api/
+│   │   ├── objects/
+│   │   │   ├── mount_unmount_client.py
+│   │   │   ├── move_client.py
+│   │   │   └── objects_client.py
+│   │   └── rackspace/
+│   │       ├── locations_client.py
+│   │       ├── rack_client.py
+│   │       └── rows_client.py
+│   ├── cli/
+│   │   ├── objects/
+│   │   └── rackspace/
+│   │       ├── locations/
+│   │       ├── rack/
+│   │       └── rows/
+│   ├── utils/
+│   ├── __init__.py
+│   ├── __main__.py
+│   └── config.py
+├── requirements.txt
+└── setup.py
 ```
 
 ---
