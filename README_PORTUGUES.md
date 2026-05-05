@@ -212,41 +212,6 @@ rackctl objects move 12 7 9 1 2
 rackctl objects types
 rackctl objects rename 12 "web-server-02"
 ```
-
----
-
-## Estrutura do Projeto
-
-```
-rackctl/
-├── debian/                  # Configuração para geração do pacote .deb
-│   ├── changelog
-│   ├── control
-│   └── rules
-├── src/
-│   ├── api/
-│   │   ├── objects/
-│   │   │   ├── mount_unmount_client.py
-│   │   │   ├── move_client.py
-│   │   │   └── objects_client.py
-│   │   └── rackspace/
-│   │       ├── locations_client.py
-│   │       ├── rack_client.py
-│   │       └── rows_client.py
-│   ├── cli/
-│   │   ├── objects/
-│   │   └── rackspace/
-│   │       ├── locations/
-│   │       ├── rack/
-│   │       └── rows/
-│   ├── utils/
-│   ├── __init__.py
-│   ├── __main__.py
-│   └── config.py
-├── requirements.txt
-└── setup.py
-```
-
 ---
 
 ## Licença
