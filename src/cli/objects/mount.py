@@ -5,7 +5,7 @@ def mount_object(args):
     route = "/mount"
 
     data = {
-        "rack_id": args.rack_id,
+        "rack_id": args.id,
         "object_id": args.object_id,
         "start_unit": args.start_unit,
         "height": args.height
@@ -21,9 +21,9 @@ def register_command_mount_object(subparser):
         help="Mount object into a rack"
     )
 
-    parser.add_argument("rack_id", type=int, help="Rack ID")
-    parser.add_argument("object_id", type=int, help="Object ID")
-    parser.add_argument("start_unit", type=int, help="Start unit")
-    parser.add_argument("height", type=int, help="Object height")
+    parser.add_argument("--id", type=int,required=True, help="Rack ID")
+    parser.add_argument("--object-id", type=int,required=True, help="Object ID")
+    parser.add_argument("--start-unit", type=int,required=True, help="Start unit")
+    parser.add_argument("--height", type=int,required=True, help="Object height")
 
     parser.set_defaults(func=mount_object)

@@ -2,7 +2,7 @@ from src.api.base_client import delete
 from src.utils.output import print_response
 
 def unmount_object(args):
-    route = f"/mount/{args.object_id}"
+    route = f"/mount/{args.id}"
 
     response = delete(route)
 
@@ -15,7 +15,7 @@ def register_command_unmount_object(subparser):
     )
 
     parser.add_argument(
-        "object_id",
+        "--id",
         type=int,
         help="Object ID"
     )

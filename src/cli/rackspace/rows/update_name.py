@@ -2,7 +2,7 @@ from src.api.base_client import patch
 from src.utils.output import print_response
 
 def rename_row(args):
-    route = f"/rows/{args.row_id}"
+    route = f"/rows/{args.id}"
 
     data = {
         "name": args.name
@@ -19,14 +19,16 @@ def register_command_update_name(subparser):
     )
 
     parser.add_argument(
-        "row_id",
+        "--id",
         type=int,
+        required=True,
         help="ID of the row"
     )
 
     parser.add_argument(
-        "name",
+        "--name",
         type=str,
+        required=True,
         help="New row name"
     )
 

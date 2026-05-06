@@ -1,0 +1,2 @@
+api_url: "http://localhost:8000/v1"
+timeout: 10

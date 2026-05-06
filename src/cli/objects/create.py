@@ -6,7 +6,7 @@ def create_object(args):
 
     data = {
         "name": args.name,
-        "obj-type_id": args.objtype_id
+        "obj-type-id": args.type_id
     }
 
     response = post(route, data)
@@ -20,14 +20,16 @@ def register_command_create_object(subparser):
     )
 
     parser.add_argument(
-        "name",
+        "--name",
         type=str,
+        required=True,
         help="Object name"
     )
 
     parser.add_argument(
-        "obj-type_id",
+        "--type-id",
         type=int,
+        required=True,
         help="Object type ID"
     )
 

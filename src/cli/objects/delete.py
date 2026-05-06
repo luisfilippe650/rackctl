@@ -2,7 +2,7 @@ from src.api.base_client import delete
 from src.utils.output import print_response
 
 def delete_object(args):
-    route = f"/objects/{args.object_id}"
+    route = f"/objects/{args.id}"
 
     response = delete(route)
 
@@ -15,8 +15,9 @@ def register_command_delete_object(subparser):
     )
 
     parser.add_argument(
-        "object_id",
+        "--id",
         type=int,
+        required=True,
         help="Object ID"
     )
 

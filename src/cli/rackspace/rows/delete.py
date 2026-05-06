@@ -2,7 +2,7 @@ from src.api.base_client import delete
 from src.utils.output import print_response
 
 def delete_row(args):
-    route = f"/rows/{args.row_id}"
+    route = f"/rows/{args.id}"
 
     response = delete(route)
 
@@ -15,8 +15,9 @@ def register_command_delete_rows(subparser):
     )
 
     parser.add_argument(
-        "row_id",
+        "--id",
         type=int,
+        required=True,
         help="ID of the row"
     )
 

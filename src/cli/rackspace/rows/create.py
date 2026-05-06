@@ -19,8 +19,9 @@ def register_command_create_rows(subparser):
     )
 
     parser.add_argument(
-        "name",
+        "--name",
         type=str,
+        required=True,
         help="Row name"
     )
 

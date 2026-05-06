@@ -2,7 +2,7 @@ from src.api.base_client import patch
 from src.utils.output import print_response
 
 def rename_object(args):
-    route = f"/objects/{args.object_id}"
+    route = f"/objects/{args.id}"
 
     data = {
         "name": args.name
@@ -19,14 +19,16 @@ def register_command_rename_object(subparser):
     )
 
     parser.add_argument(
-        "object_id",
+        "--id",
         type=int,
+        required=True,
         help="Object ID"
     )
 
     parser.add_argument(
-        "name",
+        "--name",
         type=str,
+        required=True,
         help="New object name"
     )
 

@@ -21,8 +21,9 @@ def register_command_create_rack(subparser):
     )
 
     parser.add_argument(
-        "name",
+        "--name",
         type=str,
+        required=True,
         help="Rack name"
     )
 

@@ -2,7 +2,7 @@ from src.api.base_client import put
 from src.utils.output import print_response
 
 def add_location_to_row(args):
-    route = f"/rows/{args.row_id}/{args.location_id}"
+    route = f"/rows/{args.row}/{args.location}"
 
     response = put(route)
 
@@ -15,14 +15,16 @@ def register_command_add_location_to_row(subparser):
     )
 
     parser.add_argument(
-        "row_id",
+        "--row",
         type=int,
+        required=True,
         help="ID of row"
     )
 
     parser.add_argument(
-        "location_id",
+        "--location",
         type=int,
+        required=True,
         help="ID of location"
     )
 

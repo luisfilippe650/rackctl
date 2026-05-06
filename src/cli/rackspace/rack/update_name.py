@@ -2,7 +2,7 @@ from src.api.base_client import patch
 from src.utils.output import print_response
 
 def rename_rack(args):
-    route = f"/racks/{args.rack_id}"
+    route = f"/racks/{args.id}"
 
     data = {
         "name": args.name
@@ -19,14 +19,16 @@ def register_command_rename_rack(subparser):
     )
 
     parser.add_argument(
-        "rack_id",
+        "--id",
         type=int,
+        required=True,
         help="Rack ID"
     )
 
     parser.add_argument(
-        "name",
+        "--name",
         type=str,
+        required=True,
         help="New rack name"
     )
 

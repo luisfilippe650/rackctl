@@ -2,7 +2,7 @@ from src.api.base_client import get
 from src.utils.output import print_response
 
 def show_rack_occupancy(args):
-    route = f"/racks/{args.rack_id}/occupancy"
+    route = f"/racks/{args.id}/occupancy"
 
     response = get(route)
 
@@ -15,8 +15,9 @@ def register_command_show_rack_occupancy(subparser):
     )
 
     parser.add_argument(
-        "rack_id",
+        "--id",
         type=int,
+        required=True,
         help="Rack ID"
     )
 

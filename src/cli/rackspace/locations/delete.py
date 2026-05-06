@@ -2,7 +2,7 @@ from src.api.base_client import delete
 from src.utils.output import print_response
 
 def delete_location(args):
-    route = f"/locations/{args.location_id}"
+    route = f"/locations/{args.id}"
 
     response = delete(route)
 
@@ -15,8 +15,9 @@ def register_command_delete_location(subparser):
     )
 
     parser.add_argument(
-        "location_id",
+        "--id",
         type=int,
+        required=True,
         help="Location ID"
     )
 

@@ -2,7 +2,7 @@ from src.api.base_client import delete
 from src.utils.output import print_response
 
 def delete_rack(args):
-    route = f"/racks/{args.rack_id}"
+    route = f"/racks/{args.id}"
 
     response = delete(route)
 
@@ -15,8 +15,9 @@ def register_command_delete_rack(subparser):
     )
 
     parser.add_argument(
-        "rack_id",
+        "--id",
         type=int,
+        required=True,
         help="Rack ID"
     )
 

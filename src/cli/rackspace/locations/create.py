@@ -17,8 +17,9 @@ def register_command_create_location(subparser):
     )
 
     parser.add_argument(
-        "name",
+        "--name",
         type=str,
+        required=True,
         help="Location name"
     )
 
