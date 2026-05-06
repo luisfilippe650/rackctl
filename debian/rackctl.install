@@ -1,1 +1,1 @@
-usr/share/rackctl/rackctl.default
+config/rackctl.yaml usr/share/rackctl/

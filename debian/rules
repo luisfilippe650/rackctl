@@ -1,7 +1,4 @@
 #!/usr/bin/make -f
+
 %:
 	dh $@ --with python3 --buildsystem=pybuild
-
-override_dh_install:
-	install -D -m 0644 config/rackctl.yaml debian/rackctl/usr/share/rackctl/rackctl.default
-	dh_install
