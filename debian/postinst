@@ -1,0 +1,14 @@
+#!/bin/sh
+set -e
+
+CONFIG_DIR="/etc/rackctl"
+CONFIG_FILE="$CONFIG_DIR/rackctl.yaml"
+DEFAULT_FILE="/usr/share/rackctl/rackctl.yaml"
+
+mkdir -p "$CONFIG_DIR"
+
+if [ ! -f "$CONFIG_FILE" ]; then
+    cp "$DEFAULT_FILE" "$CONFIG_FILE"
+fi
+
+exit 0
