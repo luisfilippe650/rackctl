@@ -8,6 +8,7 @@ def pretty_json(data):
 def print_response(response):
 
     ok = response.status_code < 400
+    symbol = "[+]" if ok else "[-]"
 
     method = response.request.method
     url = response.url
@@ -19,6 +20,7 @@ def print_response(response):
         response_content = response.text
 
     output = {
+        "symbol": symbol,
         "status_code": response.status_code,
         "url": url,
         "method": method,
