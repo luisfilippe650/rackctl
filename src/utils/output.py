@@ -20,10 +20,10 @@ def print_response(response):
         response_content = response.text
 
     output = {
-        "symbol": symbol,
-        "status_code": response.status_code,
         "url": url,
+        "status_code": response.status_code,
         "method": method,
+        "symbol": symbol,
         "response": response_content
     }
 
