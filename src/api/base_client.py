@@ -26,44 +26,32 @@ def _handle_exception(err, method, url):
         return ErrorResponse(err, method, url, status_code=408, message="Request timed out: the server took too long to respond.")
     elif isinstance(err, HTTPError):
         return ErrorResponse(err, method, url, status_code=500, message="HTTP error: invalid response from the server.")
-    return None
+    return ErrorResponse(err, method, url, status_code=500, message=f"Unexpected error: {str(err)}")
+
+
+def _request(method, route, data=None):
+    url = f"{BASE_URL}{route}"
+    try:
+        return requests.request(method, url, json=data, timeout=TIMEOUT)
+    except (ConnectionError, Timeout, HTTPError) as err:
+        return _handle_exception(err, method, url)
 
 
 def post(route, data):
-    url = f"{BASE_URL}{route}"
-    try:
-        return requests.post(url, json=data, timeout=TIMEOUT)
-    except (ConnectionError, Timeout, HTTPError) as err:
-        return _handle_exception(err, "POST", url)
+    return _request("POST", route, data)
 
 
 def delete(route):
-    url = f"{BASE_URL}{route}"
-    try:
-        return requests.delete(url, timeout=TIMEOUT)
-    except (ConnectionError, Timeout, HTTPError) as err:
-        return _handle_exception(err, "DELETE", url)
+    return _request("DELETE", route)
 
 
 def patch(route, data):
-    url = f"{BASE_URL}{route}"
-    try:
-        return requests.patch(url, json=data, timeout=TIMEOUT)
-    except (ConnectionError, Timeout, HTTPError) as err:
-        return _handle_exception(err, "PATCH", url)
+    return _request("PATCH", route, data)
 
 
-def put(route):
-    url = f"{BASE_URL}{route}"
-    try:
-        return requests.put(url, timeout=TIMEOUT)
-    except (ConnectionError, Timeout, HTTPError) as err:
-        return _handle_exception(err, "PUT", url)
+def put(route, data=None):
+    return _request("PUT", route, data)
 
 
 def get(route):
-    url = f"{BASE_URL}{route}"
-    try:
-        return requests.get(url, timeout=TIMEOUT)
-    except (ConnectionError, Timeout, HTTPError) as err:
-        return _handle_exception(err, "GET", url)
+    return _request("GET", route)
