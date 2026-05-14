@@ -42,6 +42,6 @@ def load_config():
 
 config = load_config()
 
-# Prioridade: Variável de ambiente > Arquivo de Configuração > Fallback
+
 BASE_URL = os.getenv("RACKCTL_API_URL", config.get("api_url", FALLBACK_CONFIG["api_url"]))
 TIMEOUT = int(os.getenv("RACKCTL_TIMEOUT", config.get("timeout", FALLBACK_CONFIG["timeout"])))

@@ -7,22 +7,20 @@ def pretty_json(data):
 
 def print_response(response):
     """
-    Exibe a resposta da API de forma legível.
-    Mantém a URL e o método visíveis para facilitar o debug.
+    Displays the API response formatted:
+    - Success: only the URL inside braces.
+    - Error: displays where the error occurred and the response content.
     """
-    ok = response.status_code < 400
-    symbol = "[+]" if ok else "[-]"
-
-    # Linha de status: [Símbolo] Código Método URL
-    print(f"{symbol} {response.status_code} {response.request.method}: {response.url}")
-
-    try:
-        response_content = response.json()
-        if response_content:
-            print(pretty_json(response_content))
-    except (ValueError, AttributeError):
-        if hasattr(response, "text") and response.text:
-            print(response.text)
-
-    print("-" * 50)  # Separador visual
-    print()
+    if response.status_code < 400:
+        # Success: only the URL inside braces
+        print(f"{{{response.url}}}")
+    else:
+        # Error: displays where the error is and the response content
+        print(f"Error {response.status_code} at {response.request.method} {response.url}")
+        try:
+            response_content = response.json()
+            if response_content:
+                print(pretty_json(response_content))
+        except (ValueError, AttributeError):
+            if hasattr(response, "text") and response.text:
+                print(response.text)

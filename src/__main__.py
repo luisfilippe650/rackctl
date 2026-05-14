@@ -26,7 +26,7 @@ def main():
         args.func(args)
     else:
         print("\nRackCTL - CLI for RackTables")
-        print("Use --help to know the commands\n")
+        print("Use --help to see available commands\n")
         parser.print_help()
 
 
