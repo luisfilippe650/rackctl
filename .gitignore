@@ -19,6 +19,10 @@ __pycache__/
 #IGNORAR A PASTA APP
 app/
 
+# Pasta de distribuição (pacotes gerados)
+dist/
+deb_dist/
+
 .pybuild/
 *.egg-info/
 venv/
