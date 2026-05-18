@@ -7,7 +7,7 @@ Configuration Management Module.
 
 This module loads the rackctl settings from:
     1. Environment variables (via .env)
-    2. /etc/rackctl/rackctl.yaml
+    2. /usr/local/rackctl/rackctl.yaml
 
 The file is automatically created during package installation.
 If the file is missing or invalid, fallback values are used.
@@ -16,7 +16,7 @@ If the file is missing or invalid, fallback values are used.
 # Carrega variáveis de ambiente do arquivo .env, se existir
 load_dotenv()
 
-CONFIG_PATH = os.getenv("RACKCTL_CONFIG", "/etc/rackctl/rackctl.yaml")
+CONFIG_PATH = os.getenv("RACKCTL_CONFIG", "/usr/local/rackctl/rackctl.yaml")
 
 FALLBACK_CONFIG = {
     "api_url": "http://localhost:8000/v1",

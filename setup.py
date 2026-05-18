@@ -21,6 +21,9 @@ setup(
         "python-dotenv",
         "pyyaml",
     ],
+    data_files=[
+        ('/usr/local/rackctl', ['config/rackctl.yaml'])
+    ],
     entry_points={
         "console_scripts": [
             "rackctl=src.__main__:main"
