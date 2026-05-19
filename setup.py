@@ -14,8 +14,8 @@ setup(
     long_description_content_type="text/markdown",
     author="INPE/CPTEC - COIDS",
     author_email="luis.nogueira@inpe.br",
-    packages=find_packages(),
-    package_dir={"": "."},
+    packages=find_packages(where='.src'),
+    package_dir={"": ".src"},
     install_requires=[
         "requests",
         "python-dotenv",
@@ -26,7 +26,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "rackctl=src.__main__:main"
+            "rackctl=__main__:main"
         ]
     },
     python_requires=">=3.8",
