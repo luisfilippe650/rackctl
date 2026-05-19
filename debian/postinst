@@ -6,5 +6,13 @@ CONFIG_FILE="$CONFIG_DIR/rackctl.yaml"
 
 mkdir -p "$CONFIG_DIR"
 
+# If RACKCTL_API_URL is provided via environment during package install,
+# create/overwrite the configuration file so the client points to the expected API.
+if [ -n "$RACKCTL_API_URL" ]; then
+  cat > "$CONFIG_FILE" <<EOF
+api_url: "$RACKCTL_API_URL"
+timeout: 10
+EOF
+fi
 
 exit 0
