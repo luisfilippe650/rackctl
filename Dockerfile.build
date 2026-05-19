@@ -1,0 +1,50 @@
+ARG UBUNTU_VERSION=22.04
+
+FROM ubuntu:${UBUNTU_VERSION}
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y \
+    software-properties-common \
+    build-essential \
+    debhelper \
+    dh-python \
+    fakeroot \
+    curl \
+    python3-all
+
+RUN if [ "$UBUNTU_VERSION" = "16.04" ] || [ "$UBUNTU_VERSION" = "18.04" ]; then \
+        add-apt-repository ppa:deadsnakes/ppa -y && \
+        apt-get update && \
+        apt-get install -y \
+            python3.8 \
+            python3.8-dev \
+            python3.8-distutils \
+            python3-pip && \
+        ln -sf /usr/bin/python3.8 /usr/bin/python3 ; \
+    else \
+        apt-get install -y \
+            python3 \
+            python3-pip \
+            python3-setuptools \
+            python3-wheel ; \
+    fi
+
+WORKDIR /app
+
+COPY . .
+
+RUN pip3 install \
+        stdeb \
+        PyYAML \
+        requests \
+        python-dotenv \
+    || pip3 install --break-system-packages \
+        stdeb \
+        PyYAML \
+        requests \
+        python-dotenv
+
+RUN DEB_BUILD_OPTIONS=nocheck \
+    python3 setup.py \
+    --command-packages=stdeb.command bdist_deb

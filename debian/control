@@ -1,0 +1,14 @@
+Source: rackctl
+Section: utils
+Priority: optional
+Maintainer: INPE/CPTEC - COIDS <luis.nogueira@inpe.br>
+Build-Depends: debhelper-compat (= 13), dh-python, python3-all, python3-setuptools
+Standards-Version: 4.6.0
+Rules-Requires-Root: no
+
+Package: rackctl
+Architecture: all
+Depends: ${python3:Depends}, ${misc:Depends}, python3-requests, python3-dotenv, python3-yaml
+Description: CLI for communicating with the RackTables API
+ Command-line interface to interact with the RackTables API,
+ allowing management of network infrastructure resources.
