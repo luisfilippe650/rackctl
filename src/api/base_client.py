@@ -1,5 +1,5 @@
-from requests.exceptions import ConnectionError, Timeout, HTTPError
-from src.utils.configuration import BASE_URL, TIMEOUT
+from requests.exceptions import ConnectionError, Timeout, HTTPError, RequestException, InvalidURL
+from utils.configuration import BASE_URL, TIMEOUT
 import requests
 
 
@@ -20,12 +20,17 @@ class ErrorResponse:
 
 
 def _handle_exception(err, method, url):
+    # Handle specific request exceptions and provide meaningful status codes/messages
+    if isinstance(err, InvalidURL):
+        return ErrorResponse(err, method, url, status_code=400, message="Invalid URL: malformed API URL.")
     if isinstance(err, ConnectionError):
         return ErrorResponse(err, method, url, status_code=503, message="Connection error: unable to reach the server.")
     elif isinstance(err, Timeout):
         return ErrorResponse(err, method, url, status_code=408, message="Request timed out: the server took too long to respond.")
     elif isinstance(err, HTTPError):
         return ErrorResponse(err, method, url, status_code=500, message="HTTP error: invalid response from the server.")
+    elif isinstance(err, RequestException):
+        return ErrorResponse(err, method, url, status_code=503, message="Request error: an error occurred while making the request.")
     return ErrorResponse(err, method, url, status_code=500, message=f"Unexpected error: {str(err)}")
 
 
@@ -33,7 +38,7 @@ def _request(method, route, data=None):
     url = f"{BASE_URL}{route}"
     try:
         return requests.request(method, url, json=data, timeout=TIMEOUT)
-    except (ConnectionError, Timeout, HTTPError) as err:
+    except Exception as err:
         return _handle_exception(err, method, url)
 
 

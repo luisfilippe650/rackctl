@@ -1,1 +1,1 @@
-config/rackctl.yaml usr/local/rackctl/
+config/rackctl.yaml etc/rackctl/

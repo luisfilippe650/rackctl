@@ -1,7 +1,7 @@
-from src.cli.objects import register_objects_commands
-from src.cli.rackspace.locations import register_locations_commands
-from src.cli.rackspace.rack import register_rack_commands
-from src.cli.rackspace.rows import register_rows_commands
+from cli.objects import register_objects_commands
+from cli.rackspace.locations import register_locations_commands
+from cli.rackspace.rack import register_rack_commands
+from cli.rackspace.rows import register_rows_commands
 import argparse
 
 def main():

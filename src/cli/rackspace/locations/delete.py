@@ -1,5 +1,5 @@
-from src.api.base_client import delete
-from src.utils.output import print_response
+from api.base_client import delete
+from utils.output import print_response
 
 def delete_location(args):
     route = f"/locations/{args.id}"

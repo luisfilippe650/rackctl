@@ -1,5 +1,5 @@
-from src.api.base_client import get
-from src.utils.output import print_response
+from api.base_client import get
+from utils.output import print_response
 
 def get_rack_details(args):
     route = f"/racks/{args.id}"

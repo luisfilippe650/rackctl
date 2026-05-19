@@ -1,5 +1,5 @@
-from src.api.base_client import put
-from src.utils.output import print_response
+from api.base_client import put
+from utils.output import print_response
 
 def add_location_to_row(args):
     route = f"/rows/{args.row}/{args.location}"

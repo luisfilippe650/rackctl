@@ -1,7 +1,7 @@
-from src.cli.rackspace.locations.create import register_command_create_location
-from src.cli.rackspace.locations.delete import register_command_delete_location
-from src.cli.rackspace.locations.list import register_command_list_locations
-from src.cli.rackspace.locations.list_rows import register_command_list_locations_rows
+from cli.rackspace.locations.create import register_command_create_location
+from cli.rackspace.locations.delete import register_command_delete_location
+from cli.rackspace.locations.list import register_command_list_locations
+from cli.rackspace.locations.list_rows import register_command_list_locations_rows
 
 
 def register_locations_commands(subparsers):

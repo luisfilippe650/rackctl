@@ -1,5 +1,5 @@
-from src.api.base_client import patch
-from src.utils.output import print_response
+from api.base_client import patch
+from utils.output import print_response
 
 def rename_object(args):
     route = f"/objects/{args.id}"

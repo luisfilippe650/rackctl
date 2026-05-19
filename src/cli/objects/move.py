@@ -1,5 +1,5 @@
-from src.api.base_client import post
-from src.utils.output import print_response
+from api.base_client import post
+from utils.output import print_response
 
 def move_object(args):
     route = "/move"

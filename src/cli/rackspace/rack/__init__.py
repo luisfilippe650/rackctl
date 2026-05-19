@@ -1,10 +1,10 @@
-from src.cli.rackspace.rack.create import register_command_create_rack
-from src.cli.rackspace.rack.delete import register_command_delete_rack
-from src.cli.rackspace.rack.list_racks import register_command_list_racks
-from src.cli.rackspace.rack.occupancy import register_command_racks_occupancy
-from src.cli.rackspace.rack.show_occupancy import register_command_show_rack_occupancy
-from src.cli.rackspace.rack.show_rack import register_command_show_rack
-from src.cli.rackspace.rack.update_name import register_command_rename_rack
+from cli.rackspace.rack.create import register_command_create_rack
+from cli.rackspace.rack.delete import register_command_delete_rack
+from cli.rackspace.rack.list_racks import register_command_list_racks
+from cli.rackspace.rack.occupancy import register_command_racks_occupancy
+from cli.rackspace.rack.show_occupancy import register_command_show_rack_occupancy
+from cli.rackspace.rack.show_rack import register_command_show_rack
+from cli.rackspace.rack.update_name import register_command_rename_rack
 
 
 def register_rack_commands(subparsers):

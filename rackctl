@@ -3,11 +3,11 @@ import sys
 import os
 import importlib.util
 
-# Add .src to sys.path to allow imports from it
-src_path = os.path.join(os.path.dirname(__file__), '.src')
+# Add src to sys.path to allow imports from it
+src_path = os.path.join(os.path.dirname(__file__), 'src')
 sys.path.insert(0, src_path)
 
-# Load __main__.py from .src as a named module to avoid conflict with this script's __main__
+# Load __main__.py from src as a named module to avoid conflict with this script's __main__
 spec = importlib.util.spec_from_file_location("rack_main", os.path.join(src_path, "__main__.py"))
 m = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(m)

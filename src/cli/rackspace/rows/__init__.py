@@ -1,10 +1,10 @@
-from src.cli.rackspace.rows.list import register_command_list_rows
-from src.cli.rackspace.rows.list_racks import register_command_list_rows_racks
-from src.cli.rackspace.rows.create import register_command_create_rows
-from src.cli.rackspace.rows.delete import register_command_delete_rows
-from src.cli.rackspace.rows.add_location import register_command_add_location_to_row
-from src.cli.rackspace.rows.remove_location import register_command_remove_location
-from src.cli.rackspace.rows.update_name import register_command_update_name
+from cli.rackspace.rows.list import register_command_list_rows
+from cli.rackspace.rows.list_racks import register_command_list_rows_racks
+from cli.rackspace.rows.create import register_command_create_rows
+from cli.rackspace.rows.delete import register_command_delete_rows
+from cli.rackspace.rows.add_location import register_command_add_location_to_row
+from cli.rackspace.rows.remove_location import register_command_remove_location
+from cli.rackspace.rows.update_name import register_command_update_name
 
 
 def register_rows_commands(subparsers):

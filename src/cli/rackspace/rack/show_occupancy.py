@@ -1,5 +1,5 @@
-from src.api.base_client import get
-from src.utils.output import print_response
+from api.base_client import get
+from utils.output import print_response
 
 def show_rack_occupancy(args):
     route = f"/racks/{args.id}/occupancy"

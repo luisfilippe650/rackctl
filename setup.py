@@ -14,15 +14,15 @@ setup(
     long_description_content_type="text/markdown",
     author="INPE/CPTEC - COIDS",
     author_email="luis.nogueira@inpe.br",
-    packages=find_packages(where='.src'),
-    package_dir={"": ".src"},
+    packages=find_packages(where='src'),
+    package_dir={"": "src"},
     install_requires=[
         "requests",
         "python-dotenv",
         "pyyaml",
     ],
     data_files=[
-        ('/usr/local/rackctl', ['config/rackctl.yaml'])
+        ('/etc/rackctl', ['config/rackctl.yaml'])
     ],
     entry_points={
         "console_scripts": [
