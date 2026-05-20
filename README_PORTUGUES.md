@@ -63,23 +63,23 @@ dpkg-buildpackage -us -uc -b
 sudo dpkg -i ../rackctl_1.0.0-1_all.deb
 ```
 
-### Opção 3 — Executar diretamente com pip (desenvolvimento)
+### Opção 3 — Executar diretamente (desenvolvimento)
 
 ```bash
 git clone https://github.com/luisfilippe650/rackctl.git
 cd rackctl
 pip install -r requirements.txt
-python -m src --help
+./rackctl --help
 ```
 
 ---
 
 ## Configuração
 
-Na primeira execução, o `rackctl` cria automaticamente um arquivo de configuração em:
+O `rackctl` utiliza um arquivo de configuração global localizado em:
 
 ```
-~/.config/rackctl/config.yaml
+/etc/rackctl/rackctl.yaml
 ```
 
 Conteúdo padrão:
@@ -89,10 +89,10 @@ api_url: http://localhost:8000/v1
 timeout: 10
 ```
 
-Edite com qualquer editor de texto para apontar para sua API do RackTables:
+Edite com qualquer editor de texto (usando sudo) para apontar para sua API do RackTables:
 
 ```bash
-nano ~/.config/rackctl/config.yaml
+sudo nano /etc/rackctl/rackctl.yaml
 ```
 
 ---
@@ -113,7 +113,7 @@ Gerencie as localizações físicas do seu datacenter.
 
 | Comando | Descrição |
 |---|---|
-| `rackctl locations create <nome>` | Cria uma nova localização |
+| `rackctl locations create --name <nome>` | Cria uma nova localização |
 | `rackctl locations delete <location_id>` | Remove uma localização pelo ID |
 | `rackctl locations list` | Lista todas as localizações |
 | `rackctl locations list-rows` | Lista todas as localizações com suas fileiras associadas |
@@ -121,7 +121,7 @@ Gerencie as localizações físicas do seu datacenter.
 **Exemplos:**
 
 ```bash
-rackctl locations create "Datacenter São Paulo"
+rackctl locations create --name "Datacenter São Paulo"
 rackctl locations delete 3
 rackctl locations list
 rackctl locations list-rows
@@ -135,24 +135,24 @@ Gerencie fileiras dentro das localizações.
 
 | Comando | Descrição |
 |---|---|
-| `rackctl rows create <nome>` | Cria uma nova fileira |
+| `rackctl rows create --name <nome>` | Cria uma nova fileira |
 | `rackctl rows delete <row_id>` | Remove uma fileira pelo ID |
 | `rackctl rows list` | Lista todas as fileiras |
 | `rackctl rows list-racks` | Lista todas as fileiras com seus racks associados |
 | `rackctl rows add-location <row_id> <location_id>` | Associa uma localização a uma fileira |
 | `rackctl rows delete-location <row_id> <location_id>` | Remove a localização de uma fileira |
-| `rackctl rows rename <row_id> <nome>` | Renomeia uma fileira |
+| `rackctl rows rename <row_id> --name <nome>` | Renomeia uma fileira |
 
 **Exemplos:**
 
 ```bash
-rackctl rows create "Fileira A"
+rackctl rows create --name "Fileira A"
 rackctl rows delete 5
 rackctl rows list
 rackctl rows list-racks
 rackctl rows add-location 5 2
 rackctl rows delete-location 5 2
-rackctl rows rename 5 "Fileira B"
+rackctl rows rename 5 --name "Fileira B"
 ```
 
 ---
@@ -163,24 +163,24 @@ Gerencie racks dentro das fileiras.
 
 | Comando | Descrição |
 |---|---|
-| `rackctl racks create <nome> --height <u> --row <row_id>` | Cria um novo rack |
+| `rackctl racks create --name <nome> --height <u> --row <row_id>` | Cria um novo rack |
 | `rackctl racks delete <rack_id>` | Remove um rack pelo ID |
 | `rackctl racks list` | Lista todos os racks |
 | `rackctl racks occupancy` | Exibe a ocupação de todos os racks |
 | `rackctl racks show-occupancy <rack_id>` | Exibe a ocupação de um rack específico |
 | `rackctl racks show <rack_id>` | Exibe os detalhes de um rack específico |
-| `rackctl racks rename <rack_id> <nome>` | Renomeia um rack |
+| `rackctl racks rename <rack_id> --name <nome>` | Renomeia um rack |
 
 **Exemplos:**
 
 ```bash
-rackctl racks create "Rack-01" --height 42 --row 3
+rackctl racks create --name "Rack-01" --height 42 --row 3
 rackctl racks delete 7
 rackctl racks list
 rackctl racks occupancy
 rackctl racks show-occupancy 7
 rackctl racks show 7
-rackctl racks rename 7 "Rack-02"
+rackctl racks rename 7 --name "Rack-02"
 ```
 
 ---
@@ -191,26 +191,26 @@ Gerencie objetos (servidores, dispositivos) e seu posicionamento nos racks.
 
 | Comando | Descrição |
 |---|---|
-| `rackctl objects create <nome> <objtype_id>` | Cria um novo objeto |
+| `rackctl objects create --name <nome> --type-id <objtype_id>` | Cria um novo objeto |
 | `rackctl objects delete <object_id>` | Remove um objeto pelo ID |
 | `rackctl objects list` | Lista todos os objetos |
 | `rackctl objects mount <rack_id> <object_id> <start_unit> <height>` | Monta um objeto em um rack |
 | `rackctl objects unmount <object_id>` | Desmonta um objeto do seu rack |
 | `rackctl objects move <object_id> <source_rack_id> <destination_rack_id> <start_unit> <height>` | Move um objeto para outro rack |
 | `rackctl objects types` | Lista todos os tipos de objetos disponíveis |
-| `rackctl objects rename <object_id> <nome>` | Renomeia um objeto |
+| `rackctl objects rename <object_id> --name <nome>` | Renomeia um objeto |
 
 **Exemplos:**
 
 ```bash
-rackctl objects create "web-server-01" 4
+rackctl objects create --name "web-server-01" --type-id 4
 rackctl objects delete 12
 rackctl objects list
 rackctl objects mount 7 12 10 2
 rackctl objects unmount 12
 rackctl objects move 12 7 9 1 2
 rackctl objects types
-rackctl objects rename 12 "web-server-02"
+rackctl objects rename 12 --name "web-server-02"
 ```
 ---
 
