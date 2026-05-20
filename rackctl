@@ -7,8 +7,8 @@ import importlib.util
 src_path = os.path.join(os.path.dirname(__file__), 'src')
 sys.path.insert(0, src_path)
 
-# Load __main__.py from src as a named module to avoid conflict with this script's __main__
-spec = importlib.util.spec_from_file_location("rack_main", os.path.join(src_path, "__main__.py"))
+# Load main.py from src as a named module to avoid conflict with this script's __main__
+spec = importlib.util.spec_from_file_location("rack_main", os.path.join(src_path, "main.py"))
 m = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(m)
 

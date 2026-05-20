@@ -26,7 +26,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "rackctl=__main__:main"
+            "rackctl=rackctl.main:main"
         ]
     },
     python_requires=">=3.8",
