@@ -2,6 +2,7 @@ from rackctl.cli.objects import register_objects_commands
 from rackctl.cli.rackspace.locations import register_locations_commands
 from rackctl.cli.rackspace.rack import register_rack_commands
 from rackctl.cli.rackspace.rows import register_rows_commands
+from rackctl.cli.status import register_status_command
 import argparse
 
 def main():
@@ -19,6 +20,7 @@ def main():
     register_rack_commands(subparsers)
     register_rows_commands(subparsers)
     register_objects_commands(subparsers)
+    register_status_command(subparsers)
 
     args = parser.parse_args()
 

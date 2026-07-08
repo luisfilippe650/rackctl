@@ -1,5 +1,6 @@
 from rackctl.cli.rackspace.locations.create import register_command_create_location
 from rackctl.cli.rackspace.locations.delete import register_command_delete_location
+from rackctl.cli.rackspace.locations.get_by_name import register_command_get_location_by_name
 from rackctl.cli.rackspace.locations.list import register_command_list_locations
 from rackctl.cli.rackspace.locations.list_rows import register_command_list_locations_rows
 
@@ -17,5 +18,6 @@ def register_locations_commands(subparsers):
 
     register_command_create_location(locations_sub)
     register_command_delete_location(locations_sub)
+    register_command_get_location_by_name(locations_sub)
     register_command_list_locations(locations_sub)
     register_command_list_locations_rows(locations_sub)

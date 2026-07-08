@@ -1,8 +1,10 @@
 from rackctl.api.base_client import delete
+from rackctl.cli.common import add_id_or_name_arguments, resolve_row_id
 from rackctl.utils.output import print_response
 
 def delete_row(args):
-    route = f"/rows/{args.id}"
+    row_id = resolve_row_id(args)
+    route = f"/rows/{row_id}"
 
     response = delete(route)
 
@@ -14,11 +16,6 @@ def register_command_delete_rows(subparser):
         help="Delete a row by ID"
     )
 
-    parser.add_argument(
-        "--id",
-        type=int,
-        required=True,
-        help="ID of the row"
-    )
+    add_id_or_name_arguments(parser, id_help="Row ID", name_help="Row name")
 
     parser.set_defaults(func=delete_row)

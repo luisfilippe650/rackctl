@@ -1,8 +1,10 @@
 from rackctl.api.base_client import patch
+from rackctl.cli.common import add_id_or_name_arguments, resolve_rack_id
 from rackctl.utils.output import print_response
 
 def rename_rack(args):
-    route = f"/racks/{args.id}"
+    rack_id = resolve_rack_id(args, name_attr="current_name")
+    route = f"/racks/{rack_id}"
 
     data = {
         "name": args.name
@@ -18,11 +20,12 @@ def register_command_rename_rack(subparser):
         help="Rename a rack"
     )
 
-    parser.add_argument(
-        "--id",
-        type=int,
-        required=True,
-        help="Rack ID"
+    add_id_or_name_arguments(
+        parser,
+        name_flag="--current-name",
+        name_dest="current_name",
+        id_help="Rack ID",
+        name_help="Current rack name"
     )
 
     parser.add_argument(

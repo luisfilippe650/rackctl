@@ -1,8 +1,10 @@
 from rackctl.api.base_client import delete
+from rackctl.cli.common import add_id_or_name_arguments, resolve_location_id
 from rackctl.utils.output import print_response
 
 def delete_location(args):
-    route = f"/locations/{args.id}"
+    location_id = resolve_location_id(args)
+    route = f"/locations/{location_id}"
 
     response = delete(route)
 
@@ -14,11 +16,6 @@ def register_command_delete_location(subparser):
         help="Delete a location"
     )
 
-    parser.add_argument(
-        "--id",
-        type=int,
-        required=True,
-        help="Location ID"
-    )
+    add_id_or_name_arguments(parser, id_help="Location ID", name_help="Location name")
 
     parser.set_defaults(func=delete_location)

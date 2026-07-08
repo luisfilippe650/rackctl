@@ -1,8 +1,9 @@
 from rackctl.api.base_client import get
+from rackctl.cli.common import add_pagination_arguments, pagination_params
 from rackctl.utils.output import print_response
 
-def list_locations(_):
-    response = get("/locations")
+def list_locations(args):
+    response = get("/locations", params=pagination_params(args))
 
     print_response(response)
 
@@ -11,5 +12,7 @@ def register_command_list_locations(subparser):
         "list",
         help="List all locations"
     )
+
+    add_pagination_arguments(parser)
 
     parser.set_defaults(func=list_locations)

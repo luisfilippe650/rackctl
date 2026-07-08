@@ -16,7 +16,7 @@ load_dotenv()
 CONFIG_PATH = os.getenv("RACKCTL_CONFIG", "/etc/rackctl/rackctl.yaml")
 
 FALLBACK_CONFIG = {
-    "api_url": "http://localhost:8000/v1",
+    "api_url": "http://localhost:8000/v1/racktables",
     "timeout": 10
 }
 

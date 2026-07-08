@@ -6,7 +6,10 @@ def create_object(args):
 
     data = {
         "name": args.name,
-        "obj-type-id": args.type_id
+        "objtype_id": args.type_id,
+        "label": args.label,
+        "asset_no": args.asset_no,
+        "comment": args.comment
     }
 
     response = post(route, data)
@@ -32,5 +35,8 @@ def register_command_create_object(subparser):
         required=True,
         help="Object type ID"
     )
+    parser.add_argument("--label", type=str, help="Object label")
+    parser.add_argument("--asset-no", type=str, help="Object asset number/service tag")
+    parser.add_argument("--comment", type=str, help="Object comment")
 
     parser.set_defaults(func=create_object)

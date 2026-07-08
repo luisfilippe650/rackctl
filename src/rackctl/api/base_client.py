@@ -1,5 +1,6 @@
 from requests.exceptions import ConnectionError, Timeout, HTTPError, RequestException, InvalidURL
 from rackctl.utils.configuration import BASE_URL, TIMEOUT
+from urllib.parse import urlencode
 import requests
 
 
@@ -34,8 +35,13 @@ def _handle_exception(err, method, url):
     return ErrorResponse(err, method, url, status_code=500, message=f"Unexpected error: {str(err)}")
 
 
-def _request(method, route, data=None):
+def _request(method, route, data=None, params=None):
     url = f"{BASE_URL}{route}"
+    if params:
+        query = urlencode({key: value for key, value in params.items() if value is not None})
+        if query:
+            separator = "&" if "?" in url else "?"
+            url = f"{url}{separator}{query}"
     try:
         return requests.request(method, url, json=data, timeout=TIMEOUT)
     except Exception as err:
@@ -58,5 +64,5 @@ def put(route, data=None):
     return _request("PUT", route, data)
 
 
-def get(route):
-    return _request("GET", route)
+def get(route, params=None):
+    return _request("GET", route, params=params)

@@ -85,7 +85,7 @@ O `rackctl` utiliza um arquivo de configuração global localizado em:
 Conteúdo padrão:
 
 ```yaml
-api_url: http://localhost:8000/v1
+api_url: http://localhost:8000/v1/racktables
 timeout: 10
 ```
 

@@ -83,7 +83,7 @@ On first run, `rackctl` automatically creates a configuration file at:
 Default contents:
 
 ```yaml
-api_url: http://localhost:8000/v1
+api_url: http://localhost:8000/v1/racktables
 timeout: 10
 ```
 

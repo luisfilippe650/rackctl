@@ -1,5 +1,8 @@
 from rackctl.cli.objects.create import register_command_create_object
 from rackctl.cli.objects.delete import register_command_delete_object
+from rackctl.cli.objects.dictionary import register_command_get_dictionary
+from rackctl.cli.objects.get_by_name import register_command_get_object_by_name
+from rackctl.cli.objects.get_by_service_tag import register_command_get_object_by_service_tag
 from rackctl.cli.objects.list import register_command_list_objects
 from rackctl.cli.objects.mount import register_command_mount_object
 from rackctl.cli.objects.move import register_command_move_object
@@ -22,6 +25,9 @@ def register_objects_commands(subparsers):
     register_command_list_objects(objects_sub)
     register_command_create_object(objects_sub)
     register_command_delete_object(objects_sub)
+    register_command_get_dictionary(objects_sub)
+    register_command_get_object_by_name(objects_sub)
+    register_command_get_object_by_service_tag(objects_sub)
     register_command_rename_object(objects_sub)
     register_command_list_object_types(objects_sub)
     register_command_mount_object(objects_sub)
