@@ -114,7 +114,8 @@ Gerencie as localizações físicas do seu datacenter.
 | Comando | Descrição |
 |---|---|
 | `rackctl locations create --name <nome>` | Cria uma nova localização |
-| `rackctl locations delete <location_id>` | Remove uma localização pelo ID |
+| `rackctl locations delete (--id <id> \| --name <nome>)` | Remove uma localização pelo ID ou nome |
+| `rackctl locations by-name --name <nome>` | Busca uma localização pelo nome |
 | `rackctl locations list` | Lista todas as localizações |
 | `rackctl locations list-rows` | Lista todas as localizações com suas fileiras associadas |
 
@@ -122,7 +123,8 @@ Gerencie as localizações físicas do seu datacenter.
 
 ```bash
 rackctl locations create --name "Datacenter São Paulo"
-rackctl locations delete 3
+rackctl locations delete --id 3
+rackctl locations by-name --name "Datacenter São Paulo"
 rackctl locations list
 rackctl locations list-rows
 ```
@@ -136,23 +138,24 @@ Gerencie fileiras dentro das localizações.
 | Comando | Descrição |
 |---|---|
 | `rackctl rows create --name <nome>` | Cria uma nova fileira |
-| `rackctl rows delete <row_id>` | Remove uma fileira pelo ID |
+| `rackctl rows delete (--id <id> \| --name <nome>)` | Remove uma fileira pelo ID ou nome |
+| `rackctl rows by-name --name <nome>` | Busca uma fileira pelo nome |
 | `rackctl rows list` | Lista todas as fileiras |
 | `rackctl rows list-racks` | Lista todas as fileiras com seus racks associados |
-| `rackctl rows add-location <row_id> <location_id>` | Associa uma localização a uma fileira |
-| `rackctl rows delete-location <row_id> <location_id>` | Remove a localização de uma fileira |
-| `rackctl rows rename <row_id> --name <nome>` | Renomeia uma fileira |
+| `rackctl rows add-location --row <id> --location <id>` | Associa uma localização a uma fileira |
+| `rackctl rows delete-location --row <id> --location <id>` | Remove a localização de uma fileira |
+| `rackctl rows rename --id <id> --name <nome>` | Renomeia uma fileira |
 
 **Exemplos:**
 
 ```bash
 rackctl rows create --name "Fileira A"
-rackctl rows delete 5
+rackctl rows delete --id 5
 rackctl rows list
 rackctl rows list-racks
-rackctl rows add-location 5 2
-rackctl rows delete-location 5 2
-rackctl rows rename 5 --name "Fileira B"
+rackctl rows add-location --row 5 --location 2
+rackctl rows delete-location --row 5 --location 2
+rackctl rows rename --id 5 --name "Fileira B"
 ```
 
 ---
@@ -164,23 +167,24 @@ Gerencie racks dentro das fileiras.
 | Comando | Descrição |
 |---|---|
 | `rackctl racks create --name <nome> --height <u> --row <row_id>` | Cria um novo rack |
-| `rackctl racks delete <rack_id>` | Remove um rack pelo ID |
+| `rackctl racks delete (--id <id> \| --name <nome>)` | Remove um rack pelo ID ou nome |
+| `rackctl racks by-name --name <nome>` | Busca um rack pelo nome |
 | `rackctl racks list` | Lista todos os racks |
 | `rackctl racks occupancy` | Exibe a ocupação de todos os racks |
-| `rackctl racks show-occupancy <rack_id>` | Exibe a ocupação de um rack específico |
-| `rackctl racks show <rack_id>` | Exibe os detalhes de um rack específico |
-| `rackctl racks rename <rack_id> --name <nome>` | Renomeia um rack |
+| `rackctl racks show-occupancy (--id <id> \| --name <nome>)` | Exibe a ocupação de um rack específico |
+| `rackctl racks show (--id <id> \| --name <nome>)` | Exibe os detalhes de um rack específico |
+| `rackctl racks rename --id <id> --name <nome>` | Renomeia um rack |
 
 **Exemplos:**
 
 ```bash
 rackctl racks create --name "Rack-01" --height 42 --row 3
-rackctl racks delete 7
+rackctl racks delete --id 7
 rackctl racks list
 rackctl racks occupancy
-rackctl racks show-occupancy 7
-rackctl racks show 7
-rackctl racks rename 7 --name "Rack-02"
+rackctl racks show-occupancy --id 7 --include-objects
+rackctl racks show --id 7
+rackctl racks rename --id 7 --name "Rack-02"
 ```
 
 ---
@@ -192,25 +196,35 @@ Gerencie objetos (servidores, dispositivos) e seu posicionamento nos racks.
 | Comando | Descrição |
 |---|---|
 | `rackctl objects create --name <nome> --type-id <objtype_id>` | Cria um novo objeto |
-| `rackctl objects delete <object_id>` | Remove um objeto pelo ID |
-| `rackctl objects list` | Lista todos os objetos |
-| `rackctl objects mount <rack_id> <object_id> <start_unit> <height>` | Monta um objeto em um rack |
-| `rackctl objects unmount <object_id>` | Desmonta um objeto do seu rack |
-| `rackctl objects move <object_id> <source_rack_id> <destination_rack_id> <start_unit> <height>` | Move um objeto para outro rack |
+| `rackctl objects delete (--id <id> \| --name <nome>)` | Remove um objeto pelo ID ou nome |
+| `rackctl objects list [--page N] [--per-page N]` | Lista objetos gerenciáveis |
+| `rackctl objects list-all [--search <texto>]` | Lista objetos de todos os tipos |
+| `rackctl objects by-name --name <nome>` | Busca um objeto pelo nome |
+| `rackctl objects by-service-tag --service-tag <tag>` | Busca um objeto pela service tag |
+| `rackctl objects summary (--id <id> \| --name <nome>)` | Exibe os atributos de um objeto |
+| `rackctl objects update --id <id> --set CAMPO=VALOR` | Atualiza campos fixos ou atributos dinâmicos |
+| `rackctl objects mount --id <rack_id> --object-id <id> --start-unit <u> --height <u>` | Monta um objeto em um rack |
+| `rackctl objects unmount (--id <id> \| --name <nome>)` | Desmonta um objeto do seu rack |
+| `rackctl objects move --id <id> --rack <destination_id> --start-unit <u>` | Move um objeto para outro rack |
 | `rackctl objects types` | Lista todos os tipos de objetos disponíveis |
-| `rackctl objects rename <object_id> --name <nome>` | Renomeia um objeto |
+| `rackctl objects dictionary --chapter-id <id>` | Lista opções de um dicionário |
+| `rackctl objects rename --id <id> --name <nome>` | Renomeia um objeto |
 
 **Exemplos:**
 
 ```bash
 rackctl objects create --name "web-server-01" --type-id 4
-rackctl objects delete 12
+rackctl objects delete --id 12
 rackctl objects list
-rackctl objects mount 7 12 10 2
-rackctl objects unmount 12
-rackctl objects move 12 7 9 1 2
+rackctl objects list-all --search "web-server"
+rackctl objects summary --id 12 --include-options
+rackctl objects update --id 12 --set "label=producao" --set "has_problems=false"
+rackctl objects update --id 12 --clear "Serial Number"
+rackctl objects mount --id 7 --object-id 12 --start-unit 10 --height 2
+rackctl objects unmount --id 12
+rackctl objects move --id 12 --source-rack 7 --rack 9 --start-unit 1 --height 2
 rackctl objects types
-rackctl objects rename 12 --name "web-server-02"
+rackctl objects rename --id 12 --name "web-server-02"
 ```
 ---
 

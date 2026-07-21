@@ -3,7 +3,7 @@ from rackctl.cli.common import resolve_row_id
 from rackctl.utils.output import print_response
 
 def create_rack(args):
-    route = "/racks"
+    route = "/racks/"
     row_id = resolve_row_id(args, id_attr="row", name_attr="row_name")
 
     data = {

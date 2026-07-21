@@ -3,8 +3,11 @@ from rackctl.cli.common import add_id_or_name_arguments, resolve_object_id
 from rackctl.utils.output import print_response
 
 def rename_object(args):
+    if args.name is None and args.comment is None:
+        raise SystemExit("Provide at least one --name or --comment option.")
+
     object_id = resolve_object_id(args, name_attr="current_name")
-    route = f"/objects/{object_id}"
+    route = f"/summary/{object_id}"
 
     data = {}
     if args.name is not None:

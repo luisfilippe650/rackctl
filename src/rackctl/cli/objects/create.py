@@ -2,7 +2,7 @@ from rackctl.api.base_client import post
 from rackctl.utils.output import print_response
 
 def create_object(args):
-    route = "/objects"
+    route = "/objects/"
 
     data = {
         "name": args.name,

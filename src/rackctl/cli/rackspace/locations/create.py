@@ -6,7 +6,7 @@ def create_location(args):
         "name": args.name
     }
 
-    response = post("/locations", data)
+    response = post("/locations/", data)
 
     print_response(response)
 

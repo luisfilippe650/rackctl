@@ -3,7 +3,7 @@ from rackctl.cli.common import resolve_object_id, resolve_rack_id
 from rackctl.utils.output import print_response
 
 def move_object(args):
-    route = "/move"
+    route = "/move/"
     object_id = resolve_object_id(args, id_attr="id", name_attr="name")
     destination_rack_id = resolve_rack_id(args, id_attr="rack", name_attr="rack_name")
 

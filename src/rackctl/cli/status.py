@@ -3,7 +3,7 @@ from rackctl.utils.output import print_response
 
 
 def get_status(_):
-    response = get("/status")
+    response = get("/status/")
     print_response(response)
 
 

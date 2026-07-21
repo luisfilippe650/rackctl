@@ -2,7 +2,7 @@ from rackctl.api.base_client import post
 from rackctl.utils.output import print_response
 
 def create_row(args):
-    route = "/rows"
+    route = "/rows/"
 
     data = {
         "name": args.name

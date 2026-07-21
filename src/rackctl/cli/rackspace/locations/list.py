@@ -3,7 +3,7 @@ from rackctl.cli.common import add_pagination_arguments, pagination_params
 from rackctl.utils.output import print_response
 
 def list_locations(args):
-    response = get("/locations", params=pagination_params(args))
+    response = get("/locations/", params=pagination_params(args))
 
     print_response(response)
 

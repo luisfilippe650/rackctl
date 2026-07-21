@@ -3,7 +3,7 @@ from rackctl.cli.common import add_pagination_arguments, pagination_params
 from rackctl.utils.output import print_response
 
 def list_objects(args):
-    route = "/objects"
+    route = "/objects/"
 
     response = get(route, params=pagination_params(args))
 
@@ -18,3 +18,25 @@ def register_command_list_objects(subparser):
     add_pagination_arguments(parser)
 
     parser.set_defaults(func=list_objects)
+
+
+def list_all_objects(args):
+    route = "/objects/all"
+    params = pagination_params(args)
+    params["search"] = args.search
+
+    response = get(route, params=params)
+
+    print_response(response)
+
+
+def register_command_list_all_objects(subparser):
+    parser = subparser.add_parser(
+        "list-all",
+        help="List objects of all types"
+    )
+
+    add_pagination_arguments(parser)
+    parser.add_argument("--search", type=str, help="Filter objects by name")
+
+    parser.set_defaults(func=list_all_objects)

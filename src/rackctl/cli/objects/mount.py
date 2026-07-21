@@ -3,7 +3,7 @@ from rackctl.cli.common import resolve_object_id, resolve_rack_id
 from rackctl.utils.output import print_response
 
 def mount_object(args):
-    route = "/mount"
+    route = "/mount/"
     rack_id = resolve_rack_id(args, id_attr="rack", name_attr="rack_name")
     object_id = resolve_object_id(args, id_attr="object_id", name_attr="object_name")
 
