@@ -224,7 +224,7 @@ rackctl objects update --id 12 --set "label=production" --set "has_problems=fals
 rackctl objects update --id 12 --clear "Serial Number"
 rackctl objects mount --id 7 --object-id 12 --start-unit 10 --height 2
 rackctl objects unmount --id 12
-rackctl objects move --id 12 --source-rack 7 --rack 9 --start-unit 1 --height 2
+rackctl objects move --id 12 --rack 9 --start-unit 1
 rackctl objects types
 rackctl objects rename --id 12 --name "web-server-02"
 ```

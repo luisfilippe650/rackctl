@@ -10,12 +10,8 @@ def move_object(args):
     data = {
         "object_id": object_id,
         "destination_rack_id": destination_rack_id,
-        "start_unit": args.start_unit,
-        "source_rack_id": args.source_rack,
-        "height": args.height
+        "start_unit": args.start_unit
     }
-    if args.source_rack_name is not None:
-        data["source_rack_id"] = resolve_rack_id(args, id_attr="source_rack", name_attr="source_rack_name")
 
     response = post(route, data)
 
@@ -36,11 +32,6 @@ def register_command_move_object(subparser):
     rack_group.add_argument("--rack", type=int, help="Destination rack ID")
     rack_group.add_argument("--rack-name", type=str, help="Destination rack name")
 
-    source_group = parser.add_mutually_exclusive_group()
-    source_group.add_argument("--source-rack", type=int, help="Source rack ID")
-    source_group.add_argument("--source-rack-name", type=str, help="Source rack name")
-
     parser.add_argument("--start-unit", type=int, required=True, help="Start unit")
-    parser.add_argument("--height", type=int, help="Object height")
 
     parser.set_defaults(func=move_object)

@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
 import sys
 import os
-import importlib.util
 
-# Add src to sys.path to allow imports from it
-src_path = os.path.join(os.path.dirname(__file__), 'src')
-sys.path.insert(0, src_path)
+# Add src to sys.path so the development wrapper uses the same package layout
+# configured in setup.py.
+src_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "src")
+if src_path not in sys.path:
+    sys.path.insert(0, src_path)
 
-# Load main.py from src as a named module to avoid conflict with this script's __main__
-spec = importlib.util.spec_from_file_location("rack_main", os.path.join(src_path, "main.py"))
-m = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(m)
+from rackctl.main import main
 
 if __name__ == "__main__":
-    m.main()
+    main()
